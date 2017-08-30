@@ -12,11 +12,11 @@ import mongoengine as me
 database_name = 'librasDB'
 me.connect(database_name)
 
-class Symbols(me.Document):
-    number = me.IntField()
-    hashValue = me.StringField()
-
 class Classify:
+
+    class Symbols(me.Document):
+        number = me.IntField()
+        hashValue = me.StringField()
 
     def __init__(self):
         self.hashSize = 256
