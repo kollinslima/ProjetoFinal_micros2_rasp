@@ -73,16 +73,16 @@ class SocketCon:
 #############################################################
     def data_in(self,con,cliente):
 
-        last_msg = " "        
-        counter = 0
+        threshold = 0.1
+        lastValue = 0
+
         while True:
             counter = counter + 1
             classificacao = self.classImagem.readPoints()
-            winner = "sem vencedores"
-#            print(classificacao)
+            winner = "Não identificado"
+            maxValue = 0;
 
             if classificacao:               
-                maxValue = 0;
                 j = 0;
                 for i in classificacao:                    
                     if(i > maxValue):
@@ -90,10 +90,10 @@ class SocketCon:
                         winner = str(j) + "\n"
                     j = j+1;
 
-            if counter > 10000:
-#                print(classificacao)
-                counter = 0
-     #           last_msg = winner
+            sleep(1)
+
+            if (abs(maxValue - lastValue)/float(lastValue)) > threshold:
+                lastValue = maxValue
                 con.send(winner.encode('utf-8')) 
 
 #############################################################
