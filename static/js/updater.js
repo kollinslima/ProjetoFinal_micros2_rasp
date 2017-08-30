@@ -3,4 +3,4 @@ setInterval(function() {
 
     myImageElement.src = 'static/img0.jpg?rand=' + Math.random();    
 
-}, 200);
+}, 300);

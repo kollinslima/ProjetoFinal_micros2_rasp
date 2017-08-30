@@ -659,3 +659,50 @@ clear
 ls
 python3 indexFlask.py 
 exit
+clear
+ls
+nano classifyClass.py 
+python3 indexFlask.py 
+git pull
+nano classifyClass.py 
+git pull
+git add .
+git commit -m "merge1"
+git push
+git pull
+nano classifyClass.py 
+python3 indexFlask.py 
+git pull
+nano classifyClass.py 
+clear
+python3 indexFlask.py 
+nano classifyClass.py 
+python3 indexFlask.py 
+nano classifyClass.py 
+python3 indexFlask.py 
+exit
+python3 indexFlask.py 
+show dbs
+mongo
+clear
+exit
+python3 indexFlask.py 
+cd static/js/
+nano updater.js 
+cd ..
+python3 indexFlask.py 
+nano flaskServer.py 
+git pull
+nano flaskServer.py 
+python3 indexFlask.py 
+nano flaskServer.py 
+python3 indexFlask.py 
+nano flaskServer.py 
+python3 indexFlask.py 
+nano flaskServer.py 
+python3 indexFlask.py 
+nano flaskServer.py 
+python3 indexFlask.py 
+nano flaskServer.py 
+python3 indexFlask.py 
+exit

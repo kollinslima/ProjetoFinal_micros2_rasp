@@ -7,6 +7,7 @@ from PIL import Image
 from time import sleep
 import math
 import imagehash
+from imagehash import hex_to_hash
 import mongoengine as me
 
 database_name = 'librasDB'
@@ -36,7 +37,7 @@ class Classify:
         database = Symbols.objects.all()
         if(database != None):
             for db_input in database:
-                self.mainList[db_input.number].append(hex_to_hash(db_input.hashValue))
+                self.mainList[db_input.number].append(hex_to_hash(db_input.hashValue,self.hashSize))
        
 
     def addImage(self,number):

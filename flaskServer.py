@@ -9,6 +9,7 @@ from PIL import Image
 from time import sleep
 #from shutil import copy2
 import os
+import math
 
 class SocketCon:
 
@@ -77,7 +78,7 @@ class SocketCon:
         lastValue = 0
 
         while True:
-            counter = counter + 1
+#            counter = counter + 1
             classificacao = self.classImagem.readPoints()
             winner = "Não identificado"
             maxValue = 0;
@@ -91,10 +92,24 @@ class SocketCon:
                     j = j+1;
 
             sleep(1)
+            try:
 
-            if (abs(maxValue - lastValue)/float(lastValue)) > threshold:
-                lastValue = maxValue
-                con.send(winner.encode('utf-8')) 
+                error = (abs(maxValue - lastValue)/float(lastValue))
+
+                print("Diferenca: " + str(error))
+
+                if not math.isinf(maxValue):
+                    if error > threshold:
+                        lastValue = maxValue
+                        con.send(winner.encode('utf-8')) 
+
+                else:
+                    con.send(winner.encode('utf-8'))
+
+            except ZeroDivisionError:
+                if not math.isinf(maxValue):
+                    lastValue = maxValue
+                con.send(winner.encode('utf-8'))
 
 #############################################################
 
@@ -126,6 +141,3 @@ class SocketCon:
 
         print ('received, yay!')
         con.close()
-
-
-
