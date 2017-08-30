@@ -608,3 +608,54 @@ exi
 exit
 python3 indexFlask.py 
 exit
+git
+sudo apt-get install git
+sudo apt-get install --fix-missing
+sudo apt-get update
+sudo apt-get install git
+ls
+git init
+git add .
+git commit -m "first commit"
+git config --global user.email "kollins.lima@usp.br"
+git config --global user.name "kollinslima"
+git commit -m "first commit"
+git remote add origin https://github.com/kollinslima/ProjetoFinal_micros2_rasp.git
+git push -u origin master
+ls
+exit
+python3 indexFlask.py 
+exit
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv EA312927
+echo "deb http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.2 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.2.list
+sudo apt-get update
+ls /etc/apt/sources.list.d/
+ls
+cd /etc/apt/sources.list.d/
+ls
+sudo rm mongodb-org-3.2.list 
+cd ~
+clear
+sudo apt-get install mongodb-server
+sudo service mongod start
+cd /etc/init.d
+l
+ls
+cd ..
+cd ~
+sudo /etc/init.d/mongod start
+sudo /etc/init.d/mongodb start
+ls
+git pull
+clear
+ls
+nano classifyClass.py 
+python3
+pip3 install mongoengine
+python3
+sudo pip3 install mongoengine
+python3
+clear
+ls
+python3 indexFlask.py 
+exit
