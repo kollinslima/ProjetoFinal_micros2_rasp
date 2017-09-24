@@ -10,7 +10,13 @@ import imagehash
 from imagehash import hex_to_hash
 import mongoengine as me
 
-database_name = 'librasDB'
+#database_name = 'test2'
+#database_name = 'test3'
+#database_name = 'test4'
+#database_name = 'test5'
+#database_name = 'test6'
+#database_name = 'test7'
+database_name = 'test8'
 me.connect(database_name)
 
 class Symbols(me.Document):
@@ -22,7 +28,7 @@ class Classify:
     def __init__(self):
         self.hashSize = 256
         self.neighbor = 3
-        self.totalElement = 2
+        self.totalElement = 8
         self.lock = threading.Lock()
         self.mainList=[]
         self.pointList=[]

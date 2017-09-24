@@ -76,6 +76,8 @@ class SocketCon:
 
         threshold = 0.1
         lastValue = 0
+        testHit = ["0\n","1\n","2\n","3\n","4\n","5\n","6\n","7\n"]
+        hit = [0,0,0,0,0,0,0,0]
 
         while True:
 #            counter = counter + 1
@@ -102,6 +104,11 @@ class SocketCon:
                     if error > threshold:
                         lastValue = maxValue
                         con.send(winner.encode('utf-8')) 
+
+                        for hitElement in range(len(hit)):
+                            if winner == testHit[hitElement]:
+                                hit[hitElement] = hit[hitElement] + 1
+                            print(str(hitElement) + ": " + str(hit[hitElement]))
 
                 else:
                     con.send(winner.encode('utf-8'))
