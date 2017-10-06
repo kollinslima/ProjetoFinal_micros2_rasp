@@ -16,7 +16,8 @@ import mongoengine as me
 #database_name = 'test5'
 #database_name = 'test6'
 #database_name = 'test7'
-database_name = 'test8'
+#database_name = 'test8'
+database_name = 'outro84'
 me.connect(database_name)
 
 class Symbols(me.Document):
