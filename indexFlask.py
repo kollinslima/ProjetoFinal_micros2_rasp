@@ -7,11 +7,11 @@ app = Flask(__name__)
 classImg = classifyClass.Classify()
 server = flaskServer.SocketCon(arg=classImg)
 
-@app.route('/')
+@app.route('/', methods=['GET'])
 def index():
 	return render_template('index.html')
 
-@app.route('/print', methods=['POST'])
+@app.route('/', methods=['POST'])
 def print_screen():    
     number = request.form['numero']
     classImg.addImage(int(number))

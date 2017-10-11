@@ -7,6 +7,14 @@ from PIL import Image
 from time import sleep
 import math
 import imagehash
+import mongoengine as me
+
+database_name = 'librasDB'
+me.connect(database_name)
+
+class Symbols(me.Document):
+    number = me.IntField()
+    hashValue = me.StringField()
 
 class Classify:
 
@@ -20,11 +28,14 @@ class Classify:
         self.classList=[]
         self.auxClassList=[]
 
-        
         for i in range(0,self.totalElement):
 #            self.classList.append(0)
             self.pointList.append([])
             self.mainList.append([])            
+
+        database = Symbols.objects.all()
+        for db_input in database:
+            self.mainList[db_input.number].append(hex_to_hash(db_input.hashValue))
        
 
     def addImage(self,number):
@@ -32,6 +43,9 @@ class Classify:
             image = Image.open('static/img0.jpg')
             imgHash = imagehash.average_hash(image,self.hashSize)
             self.mainList[number].append(imgHash)
+            
+            new_symbol = Symbol(number=number,hashValue=str(imgHash))
+            new_symbol.save()
 
     def readPoints(self):
         return self.auxClassList
