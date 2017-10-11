@@ -12,11 +12,11 @@ import mongoengine as me
 database_name = 'librasDB'
 me.connect(database_name)
 
-class Classify:
+class Symbols(me.Document):
+    number = me.IntField()
+    hashValue = me.StringField()
 
-    class Symbols(me.Document):
-        number = me.IntField()
-        hashValue = me.StringField()
+class Classify:
 
     def __init__(self):
         self.hashSize = 256
@@ -31,7 +31,7 @@ class Classify:
         for i in range(0,self.totalElement):
 #            self.classList.append(0)
             self.pointList.append([])
-            self.mainList.append([])            
+            self.mainList.append([])                 
 
         database = Symbols.objects.all()
         if(database != None):
@@ -45,7 +45,7 @@ class Classify:
             imgHash = imagehash.average_hash(image,self.hashSize)
             self.mainList[number].append(imgHash)
             
-            new_symbol = Symbol(number=number,hashValue=str(imgHash))
+            new_symbol = Symbols(number=number,hashValue=str(imgHash))
             new_symbol.save()
 
     def readPoints(self):
