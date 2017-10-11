@@ -12,11 +12,11 @@ import mongoengine as me
 database_name = 'librasDB'
 me.connect(database_name)
 
-class Symbols(me.Document):
-    number = me.IntField()
-    hashValue = me.StringField()
-
 class Classify:
+
+    class Symbols(me.Document):
+        number = me.IntField()
+        hashValue = me.StringField()
 
     def __init__(self):
         self.hashSize = 256
@@ -34,8 +34,9 @@ class Classify:
             self.mainList.append([])            
 
         database = Symbols.objects.all()
-        for db_input in database:
-            self.mainList[db_input.number].append(hex_to_hash(db_input.hashValue))
+        if(database != None):
+            for db_input in database:
+                self.mainList[db_input.number].append(hex_to_hash(db_input.hashValue))
        
 
     def addImage(self,number):
