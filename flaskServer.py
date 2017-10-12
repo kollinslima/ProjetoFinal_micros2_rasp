@@ -90,11 +90,11 @@ class SocketCon:
                         winner = str(j) + "\n"
                     j = j+1;
 
-#Calcular erro
-#            if (abs(maxValue - lastValue)/lastValue) < threshold:
-
             sleep(1)
-            con.send(winner.encode('utf-8')) 
+
+            if (abs(maxValue - lastValue)/float(lastValue)) > threshold:
+                lastValue = maxValue
+                con.send(winner.encode('utf-8')) 
 
 #############################################################
 
